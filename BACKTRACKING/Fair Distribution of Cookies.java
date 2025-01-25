@@ -15,9 +15,9 @@ class Solution {
                 return;
         }
             for (int i = 0; i < k; i++) {
-                children[i] += cookies[cur];
-                dfs(cookies, cur + 1, k, children);
-                children[i] -= cookies[cur];
+                children[i] += cookies[cur];        //add element
+                dfs(cookies, cur + 1, k, children); //explore element
+                children[i] -= cookies[cur];        //remove element
         }
 }
 }
