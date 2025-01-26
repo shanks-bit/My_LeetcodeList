@@ -1,5 +1,5 @@
 //leetocde => https://leetcode.com/problems/the-number-of-beautiful-subsets/
-
+//without using for loop
 class Solution {
     private int result;
     private int K;
