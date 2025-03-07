@@ -3,7 +3,7 @@ class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         int b = matrix[0].length;
         int a = matrix.length;
-        int left = 0, right = (a*b)-1;
+        int left = 0, right = (a*b)-1;  //considering as 1D array
 
         while (left <= right) {
             int mid = left + (right - left)/2;
