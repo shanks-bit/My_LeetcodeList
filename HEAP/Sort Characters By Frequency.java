@@ -1,6 +1,6 @@
 // leetcode => https://leetcode.com/problems/sort-characters-by-frequency/description/
 //using max heap
-
+// By default, Java's PriorityQueue is a min-heap — it keeps the smallest element at the head.
 class Solution {
     public String frequencySort(String s) {
         // Count the occurence on each character
