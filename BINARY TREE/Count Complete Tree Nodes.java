@@ -16,44 +16,47 @@
  * }
  */
 // Class containing a solution method to count the nodes of a binary tree.
-class Solution { 
-
-    // Method that returns the count of nodes in a complete binary tree.
+class Solution {
     public int countNodes(TreeNode root) {
-        // Base case: if the tree is empty, return 0
         if (root == null) {
             return 0;
         }
 
+        int lh = leftHeight(root);
+        int rh = rightHeight(root);
 
-        // Compute the depth of the left subtree
-        int leftDepth = computeDepth(root.left);
-
-        // Compute the depth of the right subtree
-        int rightDepth = computeDepth(root.right);
-
-
-        // Check if the left and right depths are equal
-        if (leftDepth == rightDepth) {
-            // If equal, the left subtree is complete and we add its node count to the recursive count of the right subtree
-            return (1 << leftDepth) + countNodes(root.right);
-        } else {
-            // If not equal, the right subtree is complete and we add its node count to the recursive count of the left subtree
-            return (1 << rightDepth) + countNodes(root.left);
+        if (lh == rh) {
+            return (int) Math.pow(2, lh) - 1;
         }
+
+        return 1 + countNodes(root.left) + countNodes(root.right);
     }
 
-    // Helper method that computes the depth of the tree (distance from the root to the deepest leaf node)
-    private int computeDepth(TreeNode root) {
-        int depth = 0;
-
-        // Loop to travel down the left edge of the tree until a null is encountered
-        for (; root != null; root = root.left) {
-            depth++;
+    public int leftHeight(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
-        // Return the depth of the tree
-        return depth;
 
+        int lh = 0;
+        TreeNode temp = root;
+        while (temp != null) {
+            temp = temp.left;
+            lh++;
+        }
+        return lh;
     }
+    
+     public int rightHeight(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
 
+        int rh = 0;
+        TreeNode temp = root;
+        while (temp != null) {
+            temp = temp.right;
+            rh++;
+        }
+        return rh;
+    }
 }
