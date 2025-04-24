@@ -45,3 +45,19 @@ class Solution {
         return root;
     }
 }
+/*
+ Why idx[0]?
+
+    You need a global counter to remember which element of preorder to use next during recursion.
+
+    Java is pass-by-value, so primitive int would not update across recursive calls.
+
+    By using int[] idx = {0}, you're passing a reference to an array, so changes to idx[0] inside the recursive solve function are reflected across all calls.
+
+What idx[0]++ Does:
+This means:
+
+    Pick the current root value from preorder using idx[0]
+
+    Then increment it so the next call picks the next root
+*/     
