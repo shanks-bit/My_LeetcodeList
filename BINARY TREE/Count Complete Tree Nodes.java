@@ -15,26 +15,6 @@
  *     }
  * }
  */
-// Custom definition for a binary tree node.
-
-class TreeNode {
-    int val; // holds the value of the node
-    TreeNode left; // reference to the left child
-    TreeNode right; // reference to the right child  
-
-    // Constructor to initialize the node with no children
-    TreeNode() {}  
-
-    // Constructor to initialize the node with a specific value
-    TreeNode(int val) { this.val = val; } 
-
-    // Constructor to initialize the node with a value and references to left and right children
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
 // Class containing a solution method to count the nodes of a binary tree.
 class Solution { 
 
