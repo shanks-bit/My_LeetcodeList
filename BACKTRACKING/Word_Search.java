@@ -1,4 +1,4 @@
-leetcode link = https://leetcode.com/problems/word-search/
+//leetcode link = https://leetcode.com/problems/word-search/
 
 /*Space Complexity: O(L)
 Time Complexity: O(M * N * 3^L)
