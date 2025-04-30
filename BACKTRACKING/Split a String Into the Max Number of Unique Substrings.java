@@ -22,9 +22,9 @@ class Solution {
         for (int j = idx; j < s.length(); j++) {
             String sub = s.substring(idx, j + 1);
             if (!st.contains(sub)) {
-                st.add(sub);
-                solve(s, j + 1, st, currCount + 1, maxCount);
-                st.remove(sub);
+                st.add(sub);                                  // do
+                solve(s, j + 1, st, currCount + 1, maxCount); // explore
+                st.remove(sub);                               // undo
             }
         }
     }
