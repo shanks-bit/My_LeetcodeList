@@ -13,11 +13,12 @@ class Solution {
         // not_take
         dfs(nums, idx + 1, mp);
 
-        // checking if we can take it or not
+        // take
+        // but also checking if we can take it or not
         if (!mp.containsKey(nums[idx] - K) && !mp.containsKey(nums[idx] + K)) {
-            mp.put(nums[idx], mp.getOrDefault(nums[idx], 0) + 1);
-            dfs(nums, idx + 1, mp);
-            mp.put(nums[idx], mp.get(nums[idx]) - 1);
+            mp.put(nums[idx], mp.getOrDefault(nums[idx], 0) + 1);    // do
+            dfs(nums, idx + 1, mp);                                  // explore
+            mp.put(nums[idx], mp.get(nums[idx]) - 1);                // undo
 
             // Remove the key if its count drops to 0 to mimic the C++ erase behavior
             if (mp.get(nums[idx]) == 0) {
