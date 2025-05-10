@@ -47,3 +47,60 @@ class Solution {
 
         return topologicalSortCheck(adj, numCourses, indegree);
     }
+
+// DFS
+    private boolean hasCycle = false;
+
+    private void DFS(Map<Integer, List<Integer>> adj, int u, boolean[] visited, Stack<Integer> st, boolean[] inRecursion) {
+        visited[u] = true;
+        inRecursion[u] = true;
+
+        for (int v : adj.getOrDefault(u, new ArrayList<>())) {
+            if (inRecursion[v]) {
+                hasCycle = true;
+                return;
+            }
+            if (!visited[v]) {
+                DFS(adj, v, visited, st, inRecursion);
+            }
+        }
+
+        st.push(u);
+        inRecursion[u] = false;
+    }
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> adj = new HashMap<>();
+        boolean[] visited = new boolean[numCourses];
+        boolean[] inRecursion = new boolean[numCourses];
+        hasCycle = false;
+        Stack<Integer> st = new Stack<>();
+
+        // Building adjacency list
+        for (int[] pair : prerequisites) {
+            int a = pair[0];
+            int b = pair[1];
+            adj.computeIfAbsent(b, k -> new ArrayList<>()).add(a);
+        }
+
+        // Performing DFS for all nodes
+        for (int i = 0; i < numCourses; i++) {
+            if (!visited[i]) {
+                DFS(adj, i, visited, st, inRecursion);
+            }
+        }
+
+        // If cycle exists, return empty array
+        if (hasCycle) {
+            return new int[0];
+        }
+
+        // Pop from stack to get topological order
+        int[] result = new int[st.size()];
+        int index = 0;
+        while (!st.isEmpty()) {
+            result[index++] = st.pop();
+        }
+
+        return result;
+    }
