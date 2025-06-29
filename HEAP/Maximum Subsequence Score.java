@@ -1,4 +1,4 @@
-//leetcode => leetcode.com/problems/maximum-subsequence-score
+//leetcode => https://leetcode.com/problems/maximum-subsequence-score/description/
 class Solution {
     public long maxScore(int[] nums1, int[] nums2, int k) {
         int[][] a = new int[nums1.length][2]; 
