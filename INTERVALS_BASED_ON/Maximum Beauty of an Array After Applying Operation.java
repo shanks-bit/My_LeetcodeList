@@ -56,6 +56,12 @@ class Solution {
 // S.C : O(1)
 class Solution {
     public int maximumBeauty(int[] nums, int k) {
+/* 
+After sorting, we use binary search for each number in the array to identify the largest value 
+that does not exceed x+2k. If we find such a value at index j, and our current number is at index i, 
+then j−i+1 represents the length of the possible subsequence. The maximum length found among all 
+numbers in the array is our answer
+*/
         Arrays.sort(nums);
         int maxBeauty = 0;
 
