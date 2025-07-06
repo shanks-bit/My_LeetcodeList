@@ -1,4 +1,4 @@
-// link -> https://www.geeksforgeeks.org/dsa/subset-sum-problem-dp-25/
+// GFG -> https://www.geeksforgeeks.org/dsa/subset-sum-problem-dp-25/
 //Java implementation for subset sum
 // problem using tabulation
 import java.util.*;
