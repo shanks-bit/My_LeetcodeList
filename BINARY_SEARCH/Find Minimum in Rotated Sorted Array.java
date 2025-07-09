@@ -19,3 +19,8 @@ class Solution {
         return nums[l];
     }
 }
+/* as mums was sorted and then rotated so    
+    Find the mid element of the array.
+    If mid element > first element of array this means that we need to look for the inflection point on the right of mid.
+    If mid element < first element of array this that we need to look for the inflection point on the left of mid.
+*/
