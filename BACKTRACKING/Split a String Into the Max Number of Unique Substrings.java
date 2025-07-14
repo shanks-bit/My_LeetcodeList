@@ -31,7 +31,9 @@ class Solution {
 }
 /*
 Pruning explanantion ---
-We check whether the current count of unique substrings, combined with the remaining characters in the string, can yield a higher count than what we have 
-already found. If this total cannot exceed our maximum count, we return immediately, skipping unnecessary calculations. This step significantly reduces the number
+We check whether the current count of unique substrings, combined with the remaining characters in the string, 
+can yield a higher count than what we have 
+already found. If this total cannot exceed our maximum count, we return immediately, skipping unnecessary
+calculations. This step significantly reduces the number
 of recursive calls, especially for longer strings
 */
