@@ -5,8 +5,9 @@
 
 //binary search
 /*
-We need a way to check on how many positive integers are missing before the given array element to use binary search. To do that, let's compare the input array
-[2, 3, 4, 7, 11] with an array with no missing integers: [1, 2, 3, 4, 5]. The number of missing integers is a simple difference between the corresponding elements of these two arrays:
+We need a way to check on how many positive integers are missing before the given array element to use binary search. To do that, 
+let's compare the input array [2, 3, 4, 7, 11] with an array with no missing integers: [1, 2, 3, 4, 5]. The number of missing 
+integers is a simple difference between the corresponding elements of these two arrays:
 
     Before 2, there is 2 - 1 = 1 missing integer.
 
@@ -22,15 +23,18 @@ We need a way to check on how many positive integers are missing before the give
     
 
 While left <= right:
+Choose the pivot index in the middle: pivot = left + (right - left) / 2. Note that in Java we couldn't use straightforward 
+pivot = (left + right) / 2
+to avoid the possible overflow. In Python, the integers are not limited, and we're fine to do that.
 
-    Choose the pivot index in the middle: pivot = left + (right - left) / 2. Note that in Java we couldn't use straightforward pivot = (left + right) / 2
-    to avoid the possible overflow. In Python, the integers are not limited, and we're fine to do that.
+If the number of positive integers which are missing before is less than k arr[pivot] - pivot - 1 < k - continue to search
+on the right side of the array: left = pivot + 1.
 
-    If the number of positive integers which are missing before is less than k arr[pivot] - pivot - 1 < k - continue to search on the right side of the array: left = pivot + 1.
+Otherwise, continue to search on the left: right = pivot - 1.
 
-    Otherwise, continue to search on the left: right = pivot - 1.
-
-At the end of the loop, left = right + 1, and the kth missing number is in-between arr[right] and arr[left]. The number of integers missing before arr[right] is arr[right] - right - 1. Hence, the number to return is arr[right] + k - (arr[right] - right - 1) = k + left.
+At the end of the loop, left = right + 1, and the kth missing number is in-between arr[right] and arr[left]. The number of 
+integers missing before arr[right] is arr[right] - right - 1. Hence, the number to return is 
+arr[right] + k - (arr[right] - right - 1) = k + left.
 
 **/
 class Solution {
