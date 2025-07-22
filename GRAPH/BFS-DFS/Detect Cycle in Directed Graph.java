@@ -3,18 +3,19 @@
 import java.util.*;
 
 class Solution {
-
+// if point is visited and in recursion also true then it is cyclic
     public boolean isCycleDFS(List<Integer>[] adj, int u, boolean[] visited, boolean[] inRecursion) {
         visited[u] = true;
         inRecursion[u] = true;
         
         for (int v : adj[u]) {
+            
             if (!visited[v] && isCycleDFS(adj, v, visited, inRecursion))
                 return true;
             else if (inRecursion[v])
                 return true;
         }
-        
+        //aafter recursion ends put it false
         inRecursion[u] = false;
         return false;
     }
