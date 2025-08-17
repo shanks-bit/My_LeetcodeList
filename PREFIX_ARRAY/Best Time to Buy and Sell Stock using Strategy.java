@@ -39,4 +39,24 @@ class Solution {
         return baseProfit + bestGain;
     }
 }
-    
+/*
+We need two things fast:
+
+Base profit (we already compute in O(n)).
+
+Gain of a window [i, i+k-1]:
+
+First half:
+
+change1=−∑(strategy[j]×prices[j])
+change1=−∑(strategy[j]×prices[j])
+
+Second half:
+
+change2=∑(prices[j])−∑(strategy[j]×prices[j])
+change2=∑(prices[j])−∑(strategy[j]×prices[j])
+
+Total gain = change1 + change2
+
+👉 That means we need prefix sums of strategy[i]*prices[i] and prefix sums of prices[i].
+*/
