@@ -12,8 +12,7 @@ Return the modified matrix. */
 
 class Solution {
     public int[][] sortMatrix(int[][] matrix) {
-        Map<Integer, PriorityQueue<Integer>> diagonalMap = new 
-                                            HashMap<>();
+        Map<Integer, PriorityQueue<Integer>> diagonalMap = new HashMap<>();
         int rows = matrix.length, cols = matrix[0].length;
 
         for (int i = 0; i < rows; i++) {
@@ -25,14 +24,14 @@ class Solution {
                 diagonalMap.get(key).offer(matrix[i][j]);
             }
         }
-
+        
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 int key = i - j;
                 matrix[i][j] = diagonalMap.get(key).poll();
             }
         }
-
+        
         return matrix;
     }
 }
