@@ -48,10 +48,10 @@ class Solution {
         boolean dp[][] = new boolean[n + 1][subSetSum + 1];
         dp[0][0] = true;
         for (int i = 1; i <= n; i++) {
-            int curr = nums[i - 1];
+            
             for (int j = 0; j <= subSetSum; j++) {
-                if (j >= curr)
-                    dp[i][j] = dp[i - 1][j] || (dp[i - 1][j - curr]);                    
+                if (nums[i - 1] <= j)
+                    dp[i][j] = dp[i - 1][j] || (dp[i - 1][j - nums[i - 1]]);                    
                 else
                     dp[i][j] = dp[i - 1][j];
             }
