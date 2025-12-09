@@ -23,7 +23,7 @@ class GfG {
         // Fill the dp table in bottom-up manner
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= sum; j++) {
-                if (j >= arr[i - 1]) {
+                if (arr[i - 1] <= j) {
                   
                     // Include or exclude
                     dp[i][j] = dp[i - 1][j]
