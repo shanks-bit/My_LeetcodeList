@@ -22,14 +22,12 @@ class GfG {
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j <= target; j++) {      
 
-                 // Exclude the current element
-                dp[i][j] = dp[i - 1][j];
-
-                // Include the current element if
-                // it doesn't exceed the current sum
                 if (arr[i - 1] <= j) {
-                    dp[i][j] += dp[i - 1][j - arr[i - 1]];
-               }
+                    // add exclude and include
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - arr[i - 1]];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
             }
         }
 
