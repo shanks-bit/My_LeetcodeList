@@ -29,17 +29,17 @@ class GfG {
 
         // Fill the DP table
         for (int i = 1; i <= n; i++) {
-            for (int sum = 0; sum <= sumTotal; sum++) {             
+            for (int j = 0; j <= sumTotal; j++) {             
                 
 
-                // Include the current element if sum >= arr[i-1]
-                if (sum >= arr.get(i - 1)) {
-                    dp[i][sum] = dp[i][sum] 
-                          || dp[i - 1][sum - arr.get(i - 1)];
+                // Include the current element if arr[i-1] <= j
+                if (arr.get(i - 1) <= j) {
+                    dp[i][j] = dp[i][j] 
+                          || dp[i - 1][j - arr.get(i - 1)];
                 }
                 else {
                   // Exclude the current element
-                  dp[i][sum] = dp[i - 1][sum];
+                  dp[i][j] = dp[i - 1][j];
                 }
             }
         }
@@ -49,10 +49,10 @@ class GfG {
 
         // Iterate over all possible subset sums
         // and find the minimum difference
-        for (int sum = 0; sum <= sumTotal / 2; sum++) {
-            if (dp[n][sum]) {
+        for (int j = 0; j <= sumTotal / 2; j++) {
+            if (dp[n][j]) {
                 minDiff = Math.min(minDiff,
-                                 Math.abs((sumTotal - sum) - sum));
+                                 Math.abs((sumTotal - j) - j));
             }
         }
 
