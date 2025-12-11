@@ -1,5 +1,5 @@
 // leetcode -> https://leetcode.com/problems/coin-change/description/
-
+// 1-> Minimum Coin Change
 public class Solution {
   public int coinChange(int[] coins, int amount) {
     int max = amount + 1;
@@ -39,3 +39,7 @@ or
         }
         return t[coins.length][amount] ==Integer.MAX_VALUE - 1? -1: t[coins.length][amount]  ;
       }
+
+// 2-> No. of ways in coin change
+
+//https://leetcode.com/problems/coin-change-ii/description/
