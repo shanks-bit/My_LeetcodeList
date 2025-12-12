@@ -11,6 +11,7 @@ int countCommon(string a, string b, int m, int n) {
 				best_count = max(t[i][j], best_count);
 			}
 			else
+				// it will be 0 bcoz it is  a substring not subsequence
 				t[i][j] = 0;
 
 	return best_count;
