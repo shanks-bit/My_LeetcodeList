@@ -1,40 +1,62 @@
 // leetcode => https://leetcode.com/problems/house-robber/description/
-// bottom up approach
+
+// top down approach
 class Solution {
     public int rob(int[] nums) {
-        //bottom up approach
-        if (nums.length == 1) {
-            return nums[0];class Solution {
-    private HashMap<Integer, Integer> memo = new HashMap<Integer, Integer>();
-    private int[] nums;
-    
-    private int dp(int i) {
-        // Base cases
-        if (i == 0) return nums[0];
-        if (i == 1) return Math.max(nums[0], nums[1]);
-        if (!memo.containsKey(i)) {
-            memo.put(i, Math.max(dp(i - 1), dp(i - 2) + nums[i])); // Recurrence relation
+        int N = nums.length;
+
+        // Special handling for empty array case.
+        if (N == 0) {
+            return 0;
         }
-        return memo.get(i);
-    }
-    
-    public int rob(int[] nums) {
-        this.nums = nums;
-        return dp(nums.length - 1);
-    }
-}
+
+        int[] maxRobbedAmount = new int[nums.length + 1];
+
+        // Base case initializations.
+        maxRobbedAmount[N] = 0;
+        maxRobbedAmount[N - 1] = nums[N - 1];
+
+        // DP table calculations.
+        for (int i = N - 2; i >= 0; --i) {
+            // Same as the recursive solution.
+            maxRobbedAmount[i] = Math.max(
+                maxRobbedAmount[i + 1],
+                maxRobbedAmount[i + 2] + nums[i]
+            );
         }
-        int[] dp = new int[nums.length];
-        // Base cases
-        dp[0] = nums[0];
-        dp[1] = Math.max(nums[0], nums[1]);
-        
-        for (int i = 2; i < nums.length; i++) {
-            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]); // Recurrence relation
-        }
-        
-        return dp[nums.length - 1];
+
+        return maxRobbedAmount[0];
     }
 }
 
-// top down approach
+// above method optimized
+class Solution {
+    public int rob(int[] nums) {
+        int N = nums.length;
+
+        // Special handling for empty array case.
+        if (N == 0) {
+            return 0;
+        }
+
+        int robNext, robNextPlusOne;
+
+        // Base case initializations.
+        robNextPlusOne = 0;
+        robNext = nums[N - 1];
+
+        // DP table calculations. Note: we are not using any
+        // table here for storing values. Just using two
+        // variables will suffice.
+        for (int i = N - 2; i >= 0; --i) {
+            // Same as the recursive solution.
+            int current = Math.max(robNext, robNextPlusOne + nums[i]);
+
+            // Update the variables
+            robNextPlusOne = robNext;
+            robNext = current;
+        }
+
+        return robNext;
+    }
+}
