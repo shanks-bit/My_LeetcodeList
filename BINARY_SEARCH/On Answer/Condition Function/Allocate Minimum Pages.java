@@ -25,6 +25,8 @@ public class Main {
         if (m > n)
             return -1;
 
+        // low = it is the max. no. of pages present in the array book that could be given to a student 
+        // high = it is the sum of pages taken as highest value that can be given to a student
         int low = Collections.max(arr);
         int high = arr.stream().mapToInt(Integer::intValue).sum();
         while (low <= high) {
