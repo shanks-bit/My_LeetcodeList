@@ -1,4 +1,4 @@
-// GFG => https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
+// GFG => https://www.geeksforgeeks.org/dsa/bellman-ford-algorithm-dp-23/
 
 public int[] bellmanFord(int V, int[][] edges, int src) {
         // code here
