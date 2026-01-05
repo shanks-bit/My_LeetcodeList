@@ -31,37 +31,37 @@ class Solution {
     }
 
     //bfs
-    private int n;
-    
-    private void bfs(int[][] adj, int u, boolean[] visited) {
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(u);
-        visited[u] = true;
-        
-        while (!queue.isEmpty()) {
-            int node = queue.poll();
-            
-            for (int v = 0; v < n; v++) {
-                if (adj[node][v] == 1 && !visited[v]) {
-                    visited[v] = true;
-                    queue.add(v);
+    class Solution {
+
+    public void bfs(int node, int[][] isConnected, boolean[] visit) {
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(node);
+        visit[node] = true;
+
+        while (!q.isEmpty()) {
+            node = q.poll();
+
+            for (int i = 0; i < isConnected.length; i++) {
+                if (isConnected[node][i] == 1 && !visit[i]) {
+                    q.offer(i);
+                    visit[i] = true;
                 }
             }
         }
     }
-    
+
     public int findCircleNum(int[][] isConnected) {
-        n = isConnected.length;
-        boolean[] visited = new boolean[n];
-        int count = 0;
-        
+        int n = isConnected.length;
+        int numberOfComponents = 0;
+        boolean[] visit = new boolean[n];
+
         for (int i = 0; i < n; i++) {
-            if (!visited[i]) {
-                bfs(isConnected, i, visited);
-                count++;
+            if (!visit[i]) {
+                numberOfComponents++;
+                bfs(i, isConnected, visit);
             }
         }
-        
-        return count;
+
+        return numberOfComponents;
     }
 }
