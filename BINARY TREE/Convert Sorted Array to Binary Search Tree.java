@@ -6,7 +6,7 @@ class Solution {
 
     public TreeNode helper(int left, int right) {
         if (left > right) return null;
-left, root, right
+
         // always choose left middle node as a root
         int p = (left + right) / 2;
 
