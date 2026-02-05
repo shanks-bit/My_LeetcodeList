@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/editorial/
-
+//Always Choose Left Middle Node as a Root
 //preorder -> root, left, right
 class Solution {
     int[] nums;
