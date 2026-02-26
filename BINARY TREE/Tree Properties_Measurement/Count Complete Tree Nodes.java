@@ -60,3 +60,12 @@ class Solution {
         return rh;
     }
 }
+--------------------------------------------------------------------
+   public int ctr=0;
+    public int countNodes(TreeNode root) {
+        if(root==null)return 0;
+        ctr++;
+        countNodes(root.left);
+        countNodes(root.right);
+        return ctr;
+    }
