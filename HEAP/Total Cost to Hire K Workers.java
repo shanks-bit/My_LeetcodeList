@@ -3,11 +3,13 @@
 /*
 
 
-    Initialize two priority queues head_workers and tail_workers that store the first m workers and the last m workers, where the worker with the lowest cost has the highest priority.
+    Initialize two priority queues head_workers and tail_workers that store the first m workers and the last m workers, where the worker with the lowest cost 
+    has the highest priority.
 
     Set up two pointers next_head = m, next_tail = n - m - 1 indicating the next worker to be added to two queues.
 
-    Compare the top workers in both queues, and hire the one with the lowest cost, if both workers have the same cost, hire the worker from head_workers. Add the cost of this worker to the total cost.
+    Compare the top workers in both queues, and hire the one with the lowest cost, if both workers have the same cost, hire the worker from head_workers.
+    Add the cost of this worker to the total cost.
 
     If next_head <= next_tail, we need to fill the queue with one worker:
         If the hired worker is from head_workers, we add the worker costs[next_head] to it and increment next_head by 1.
