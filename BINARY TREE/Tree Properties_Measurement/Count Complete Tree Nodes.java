@@ -18,9 +18,13 @@
 // Class containing a solution method to count the nodes of a binary tree.
 class Solution {
     public int countNodes(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
+        if(root==null) return 0;
+
+        int ln=countNodes(root.left);
+        int rn=countNodes(root.right);
+        return ln+rn+1;
+    }
+}
 
         int lh = leftHeight(root);
         int rh = rightHeight(root);
