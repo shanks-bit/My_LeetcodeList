@@ -28,13 +28,15 @@ class Solution {
     public void nextPermutation(int[] nums) {
         int n = nums.length;
         int i = n - 2;
-
+        //find pivot element
         while (i >= 0 && nums[i] >= nums[i + 1]) i--;
 
         if (i >= 0) {
             int j = n - 1;
+            //Find the first element greater than the pivot
             while (nums[j] <= nums[i]) j--;
 
+            //swap them
             int temp = nums[i];
             nums[i] = nums[j];
             nums[j] = temp;
