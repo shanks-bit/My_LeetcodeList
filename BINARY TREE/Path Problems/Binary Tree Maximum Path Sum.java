@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/binary-tree-maximum-path-sum/editorial/
+// https://leetcode.com/problems/binary-tree-maximum-path-sum/solutions/6601001/video-need-to-understand-what-path-is-ex-yhog/
 
 class Solution {
     public int maxPathSum(TreeNode root) {
