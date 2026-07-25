@@ -29,14 +29,18 @@ class Solution {
 
 // Approach
 
-//     Sorting the Array: Start by sorting the array. This helps in efficiently finding the distance between pairs since a sorted array guarantees that smaller differences appear first.
+//     Sorting the Array: Start by sorting the array. This helps in efficiently finding the distance between pairs since a 
+//sorted array guarantees that smaller differences appear first.
 
-//     Binary Search on Distance: Use binary search to guess the possible value of the k-th smallest distance. The search range for possible distances will be between 0 (the minimum possible distance) and the difference between the maximum and minimum elements in the array.
+//     Binary Search on Distance: Use binary search to guess the possible value of the k-th smallest distance. The search 
+//range for possible distances will be between 0 (the minimum possible distance) and the difference between the maximum and minimum elements in the array.
 
-//     Counting Pairs with getPairs: For a mid-value during the binary search, count how many pairs have a distance less than or equal to this mid-value. This is done by iterating through the array with a two-pointer approach.
+//     Counting Pairs with getPairs: For a mid-value during the binary search, count how many pairs have a distance less than 
+//or equal to this mid-value. This is done by iterating through the array with a two-pointer approach.
 
 //     Adjusting the Search Range:
-//         If the count of pairs with a distance less than or equal to the current mid is less than k, it means the k-th smallest distance must be larger, so adjust the lower bound.
+//         If the count of pairs with a distance less than or equal to the current mid is less than k, it means the k-th 
+//smallest distance must be larger, so adjust the lower bound.
 //         Otherwise, adjust the upper bound.
 
 //     Result: The binary search will converge on the k-th smallest distance.
