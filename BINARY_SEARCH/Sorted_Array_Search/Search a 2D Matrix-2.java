@@ -21,7 +21,8 @@ class Solution {
 }
 
 
-//Start from the top-right corner of the matrix (row = 0, col = m-1), where n is the number of rows and m is the number of columns in the matrix.
+//Start from the top-right corner of the matrix (row = 0, col = m-1), where n is the number of rows and m is the number of 
+//columns in the matrix.
 //Compare the element at the current position (matrix[row][col]) with the target value:
 //    If the element is equal to the target, return true.
 //    If the element is less than the target, move to the next row (row++) to explore larger elements.
