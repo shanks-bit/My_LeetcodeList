@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/count-number-of-ways-to-place-houses/description/
 
+// top - down approach -> here we are finding solution for one side of road as it would be same for both sides so at last 
+// we are multiplying ans to get for both sides and on one side it will act as a fibbonocci seroes.
 class Solution {
     long m = 1000000007;
     long[] dp;
