@@ -1,69 +1,31 @@
 // https://leetcode.com/problems/spiral-matrix-iii/description/
 
 class Solution {
-    int leftBound, topBound, rightBound, bottomBound, currentIndex;
-    int[][] path;
-
     public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
-        int totalCells = cols * rows;
-        path = new int[totalCells][];
+        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // East, South, West, North
+        int[][] result = new int[rows * cols][2];
+        int steps = 0, d = 0, len = 0;
         
-        initializeBounds(rStart, cStart);
-        addToPath(rStart, cStart);
+        result[0] = new int[]{rStart, cStart};
+        int count = 1;
         
-        while (currentIndex < totalCells) {
-            if (topBound >= 0) {
-                traverseEast(Math.max(0, leftBound + 1), Math.min(cols - 1, rightBound));
-            }
-            bottomBound++;
-            if (currentIndex >= totalCells) break;
+        while (count < rows * cols) {
+            if (d == 0 || d == 2) steps++; // Increase step size after moving East or West
             
-            if (rightBound < cols) {
-                traverseSouth(Math.max(0, topBound + 1), Math.min(rows - 1, bottomBound));
+            for (int i = 0; i < steps; i++) {
+                rStart += directions[d][0];
+                cStart += directions[d][1];
+                
+                if (rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols) {
+                    result[count++] = new int[]{rStart, cStart};
+                }
+                
+                if (count == rows * cols) return result;
             }
-            leftBound--;
-            if (currentIndex >= totalCells) break;
             
-            if (bottomBound < rows) {
-                traverseWest(Math.min(cols - 1, rightBound - 1), Math.max(0, leftBound));
-            }
-            topBound--;
-            if (currentIndex >= totalCells) break;
-            
-            if (leftBound >= 0) {
-                traverseNorth(Math.min(rows - 1, bottomBound - 1), Math.max(0, topBound));
-            }
-            rightBound++;
-            if (currentIndex >= totalCells) break;
+            d = (d + 1) % 4; // Change direction
         }
         
-        return path;
-    }
-
-    private void initializeBounds(int rStart, int cStart) {
-        leftBound = rightBound = cStart;
-        topBound = bottomBound = rStart;
-        currentIndex = 0;
-        rightBound++;
-    }
-
-    private void addToPath(int row, int col) {
-        path[currentIndex++] = new int[]{row, col};
-    }
-
-    private void traverseEast(int start, int end) {
-        for (int i = start; i <= end; i++) addToPath(topBound, i);
-    }
-
-    private void traverseWest(int start, int end) {
-        for (int i = start; i >= end; i--) addToPath(bottomBound, i);
-    }
-
-    private void traverseSouth(int start, int end) {
-        for (int i = start; i <= end; i++) addToPath(i, rightBound);
-    }
-
-    private void traverseNorth(int start, int end) {
-        for (int i = start; i >= end; i--) addToPath(i, leftBound);
+        return result;
     }
 }
