@@ -1,60 +1,54 @@
 // https://leetcode.com/problems/string-to-integer-atoi/description/
 
 class Solution {
-    public int myAtoi(String str) {
-        // Ensure the input string is not null
-        if (str == null) {
+    public int myAtoi(String s) {
+        if (s == null || s.length() == 0) {
             return 0;
         }
-        int length = str.length();
-
-        // If the string is empty, return 0
-        if (length == 0) {
+        
+        // Constants for 32-bit signed integer range
+        final int INT_MAX = Integer.MAX_VALUE;
+        final int INT_MIN = Integer.MIN_VALUE;
+        
+        int i = 0;
+        int n = s.length();
+        
+        // Step 1: Skip leading whitespace
+        while (i < n && s.charAt(i) == ' ') {
+            i++;
+        }
+        
+        // Check if we've reached the end
+        if (i == n) {
             return 0;
         }
-        int index = 0;
-
-        // Skip whitespace characters
-        while (index < length && str.charAt(index) == ' ') {
-            index++;
-        }
-
-        // If we reached the end of string after skipping spaces, return 0
-        if (index == length) {
-            return 0;
-        }
-        // Determine the sign based on the current character
+        
+        // Step 2: Check for sign
         int sign = 1;
-        if (str.charAt(index) == '-') {
+        if (s.charAt(i) == '+') {
+            i++;
+        } else if (s.charAt(i) == '-') {
             sign = -1;
-            index++;
-        } else if (str.charAt(index) == '+') {
-            index++;
+            i++;
         }
-        int result = 0;
-
-        // Pre-calculate the threshold to check for overflow
-        int threshold = Integer.MAX_VALUE / 10;      
-
-        // Convert the number
-        while (index < length) {
-            char currentChar = str.charAt(index);          
-
-            // Break if the current character is not a digit
-            if (currentChar < '0' || currentChar > '9') {
-                break;
+        
+        // Step 3: Read digits and convert
+        long res = 0;
+        while (i < n && Character.isDigit(s.charAt(i))) {
+            int digit = s.charAt(i) - '0';
+            res = res * 10 + digit;
+            
+            if (sign * res <= INT_MIN) {
+                return INT_MIN;
             }
-
-            // Check for overflow when adding a new digit
-            if (result > threshold || (result == threshold && currentChar > '7')) {
-                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            if (sign * res >= INT_MAX) {
+                return INT_MAX;
             }
-
-            // Update result with the new digit
-            result = result * 10 + (currentChar - '0');
-            index++;
+            
+            i++;
         }
-        // Apply the determined sign to the result and return
-        return sign * result;
+        
+        // Step 4: Apply sign and return
+        return (int)(res * sign);        
     }
 }
