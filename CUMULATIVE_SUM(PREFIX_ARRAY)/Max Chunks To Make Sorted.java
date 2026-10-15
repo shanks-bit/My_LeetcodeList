@@ -3,6 +3,8 @@
 // Approach-1 (Using cumulative Sum)
 // T.C : O(n)
 // S.C : O(1)
+//The main idea is: whenever the sum of the elements
+//seen so far equals the sum of their expected sorted positions, we can make a chunk.
 class Solution {
     public int maxChunksToSorted(int[] arr) {
         int n = arr.length;
