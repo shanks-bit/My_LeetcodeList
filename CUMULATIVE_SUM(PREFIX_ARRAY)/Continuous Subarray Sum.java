@@ -33,3 +33,13 @@ class Solution {
         return false;
     }
 }
+/*
+because of the modulo property — if two prefix sums have the same remainder mod k, their difference (the subarray sum between them) is divisible by k.
+
+Why that works (brief):
+
+    Let prefixSum[i] = sum of nums[0..i].
+    If prefixSum[j] % k == prefixSum[i] % k (with j > i) then (prefixSum[j] - prefixSum[i]) % k == 0, so the sum of nums[i+1..j] is a multiple of k.
+    So by storing remainders of prefix sums and their earliest index, when we see the same remainder again we know there's a subarray whose sum is divisible by k.
+
+*/
