@@ -23,7 +23,8 @@ class Solution {
             }
         }
 
-        // Precompute the time (prefix sum)so that at any index can calculate cumulative time with respect to any element last position seen
+        // Precompute the time (prefix sum)so that at any index can calculate cumulative time with respect to any element 
+        //last position seen
         for (int i = 1; i < travel.length; i++) {
             travel[i] += travel[i - 1];
         }
