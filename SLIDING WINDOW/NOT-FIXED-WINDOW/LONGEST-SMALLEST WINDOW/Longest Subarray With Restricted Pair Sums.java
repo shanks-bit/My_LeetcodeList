@@ -60,7 +60,8 @@ class Solution {
         // pair sum should be btw [0, 500] for to be valid. 
 
         // Starting from and start index `l` we can find till when we have valid pair. 
-        // If we get a invalid pair after adding some index r, then subsequent arrays are not valid. that means move `l` now and again find till it's valid. 
+        // If we get a invalid pair after adding some index r, then subsequent arrays are not valid. that 
+        // means move `l` now and again find till it's valid. 
         int l = 0, r = 0; 
         int n = nums.length; 
         int ans = 0; 
