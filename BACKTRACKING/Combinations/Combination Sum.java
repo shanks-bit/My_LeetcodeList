@@ -14,7 +14,8 @@ class Solution {
         else{ 
             for(int i = start; i < candidates.length; i++){
                 tempList.add(candidates[i]);                //take element
-                backtrack(list, tempList, candidates, remain - candidates[i], i); // not i + 1 because we can reuse same elements and exploring element
+                // not i + 1 because we can reuse same elements and exploring element
+                backtrack(list, tempList, candidates, remain - candidates[i], i); 
                 tempList.remove(tempList.size() - 1);       //remove element
             }
         }
