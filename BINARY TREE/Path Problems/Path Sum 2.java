@@ -30,12 +30,14 @@ class Solution {
         
         temp.add(root.val);
 
-        // Found a leaf node, if targetSum becomes zero after adding leaf node value then a path is found, add the path to the result list
+        // Found a leaf node, if targetSum becomes zero after adding leaf node value then a path is found, add the path
+        // to the result list
         if (root.left == null && root.right == null && root.val == curr) {
             result.add(new ArrayList<>(temp));
         }
 
-        // Traverse left part(reduce targetSum by node value), and backtrack (by deleting node from list) after completing the left subtree
+        // Traverse left part(reduce targetSum by node value), and backtrack (by deleting node from list) after 
+        // completing the left subtree
         collectPaths(root.left, curr - root.val, temp, result);
 
         // Traverse right part and backtrack
